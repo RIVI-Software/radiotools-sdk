@@ -1,6 +1,6 @@
 {
   "name": "@rivi-software/radiotools-sdk-svelte",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Svelte stores for @rivi-software/radiotools-sdk (generated from @rivi-software/radiotools-contract)",
   "license": "MIT",
   "type": "module",
