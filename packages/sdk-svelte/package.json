@@ -21,7 +21,7 @@
     "svelte": ">=4"
   },
   "devDependencies": {
-    "svelte": "5.39.6",
+    "svelte": "5.55.7",
     "typescript": "5.9.3"
   },
   "publishConfig": {
