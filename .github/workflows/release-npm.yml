@@ -32,7 +32,9 @@ jobs:
         with:
           node-version: "22"
           registry-url: https://registry.npmjs.org
-          always-auth: true
+
+      - name: Update npm for trusted publishing
+        run: npm install -g npm@latest
 
       - name: Install
         run: bun install --frozen-lockfile
@@ -55,4 +57,3 @@ jobs:
           commit: "chore: version packages for npm"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
