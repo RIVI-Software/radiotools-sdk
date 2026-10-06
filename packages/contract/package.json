@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/RIVI-Software/radiotools-sdk.git",
+    "url": "https://github.com/rivi-software/radiotools-sdk.git",
     "directory": "packages/contract"
   }
 }
