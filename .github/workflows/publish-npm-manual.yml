@@ -1,0 +1,56 @@
+name: Publish npm (manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: npm publish --dry-run (no upload)
+        type: boolean
+        default: true
+      access:
+        description: npm access (restricted needs @radiotools scope on a paid/org plan)
+        type: choice
+        options:
+          - restricted
+          - public
+        default: restricted
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          registry-url: https://registry.npmjs.org
+
+      - name: Install
+        run: bun install --frozen-lockfile
+
+      - name: Generate SDK artifacts
+        run: bun run generate
+
+      - name: Build publishable packages
+        run: bun run build
+
+      - name: Verify
+        run: bun run check && bun test
+
+      - name: Publish packages
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_PUBLISH_ACCESS: ${{ inputs.access }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: bash scripts/publish-npm-ordered.sh

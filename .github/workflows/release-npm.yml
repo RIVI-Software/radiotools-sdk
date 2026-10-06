@@ -1,0 +1,58 @@
+name: Release npm
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: release-npm-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  release:
+    name: Version or publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          registry-url: https://registry.npmjs.org
+          always-auth: true
+
+      - name: Install
+        run: bun install --frozen-lockfile
+
+      - name: Generate SDK artifacts
+        run: bun run generate
+
+      - name: Build publishable packages
+        run: bun run build
+
+      - name: Verify
+        run: bun run check && bun test
+
+      - name: Create release PR or publish to npm
+        uses: changesets/action@v1
+        with:
+          version: bun run version-packages
+          publish: bun run release-packages
+          title: "chore: version packages for npm"
+          commit: "chore: version packages for npm"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

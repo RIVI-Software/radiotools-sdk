@@ -11,9 +11,13 @@
     "test": "bun run --filter @radiotools/sdk test",
     "generate": "bun run --filter @radiotools/sdk-generator generate --target all",
     "build": "bun run --filter @radiotools/sdk-generator build",
-    "postinstall": "bun run --filter @radiotools/sdk-generator build"
+    "postinstall": "bun run --filter @radiotools/sdk-generator build",
+    "changeset": "changeset",
+    "version-packages": "changeset version && bun install",
+    "release-packages": "bun run generate && bun run build && bun run check && bun test && changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "2.29.2",
     "@types/bun": "1.2.23",
     "typescript": "5.9.3"
   },
