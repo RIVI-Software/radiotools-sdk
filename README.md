@@ -8,13 +8,13 @@ Customer SDKs for **radio stations** using the RadioTools listener API (contract
 
 | Package | Description |
 | --- | --- |
-| [`@radiotools/contract`](packages/contract) | API manifest and GraphQL schema — source of truth for generators |
-| [`@radiotools/sdk-generator`](packages/generator) | CLI to emit framework SDKs from the contract |
-| [`@radiotools/sdk`](packages/sdk-typescript) | Full TypeScript client (REST, GraphQL, WebSocket, ETag, retries) |
-| [`@radiotools/sdk-react`](packages/sdk-react) | React hooks (generated; wraps `@radiotools/sdk`) |
-| [`@radiotools/sdk-vue`](packages/sdk-vue) | Vue composables (generated) |
-| [`@radiotools/sdk-svelte`](packages/sdk-svelte) | Svelte stores (generated) |
-| [`@radiotools/sdk-next`](packages/sdk-next) | Next.js App Router server helpers (generated) |
+| [`@rivi-software/radiotools-contract`](packages/contract) | API manifest and GraphQL schema — source of truth for generators |
+| [`@rivi-software/radiotools-sdk-generator`](packages/generator) | CLI to emit framework SDKs from the contract |
+| [`@rivi-software/radiotools-sdk`](packages/sdk-typescript) | Full TypeScript client (REST, GraphQL, WebSocket, ETag, retries) |
+| [`@rivi-software/radiotools-sdk-react`](packages/sdk-react) | React hooks (generated; wraps `@rivi-software/radiotools-sdk`) |
+| [`@rivi-software/radiotools-sdk-vue`](packages/sdk-vue) | Vue composables (generated) |
+| [`@rivi-software/radiotools-sdk-svelte`](packages/sdk-svelte) | Svelte stores (generated) |
+| [`@rivi-software/radiotools-sdk-next`](packages/sdk-next) | Next.js App Router server helpers (generated) |
 | [`radiotools-sdk`](packages/sdk-python) | Python `httpx` stubs (generated) |
 | [`radiotools-sdk-go`](packages/sdk-go) | Go `net/http` stubs (generated) |
 | [`RadioTools.Sdk`](packages/sdk-dotnet) | .NET `HttpClient` stubs (generated) |
@@ -35,11 +35,11 @@ bun run generate
 
 ## Publish to npm
 
-Publishable packages (fixed version group): `@radiotools/contract`, `@radiotools/sdk`, `@radiotools/sdk-react`, `@radiotools/sdk-vue`, `@radiotools/sdk-svelte`, `@radiotools/sdk-next`, `@radiotools/sdk-generator`.
+Publishable packages (fixed version group): `@rivi-software/radiotools-contract`, `@rivi-software/radiotools-sdk`, `@rivi-software/radiotools-sdk-react`, `@rivi-software/radiotools-sdk-vue`, `@rivi-software/radiotools-sdk-svelte`, `@rivi-software/radiotools-sdk-next`, `@rivi-software/radiotools-sdk-generator`.
 
 ### GitHub setup
 
-1. Create an npm access token with **publish** rights to the `@radiotools` scope.
+1. Create an npm access token with **publish** rights to the `@rivi-software` scope.
 2. Add repository secret **`NPM_TOKEN`** ([Settings → Secrets → Actions](https://github.com/RIVI-Software/radiotools-sdk/settings/secrets/actions)).
 3. Enable **npm provenance** for the org (recommended; workflows request `id-token: write`).
 
@@ -66,17 +66,17 @@ bunx changeset          # describe the change
 Generate one target:
 
 ```bash
-bun run --filter @radiotools/sdk-generator generate --target python
-bun run --filter @radiotools/sdk-generator generate --target react
-bun run --filter @radiotools/sdk-generator generate --target vue
-bun run --filter @radiotools/sdk-generator generate --target openapi
+bun run --filter @rivi-software/radiotools-sdk-generator generate --target python
+bun run --filter @rivi-software/radiotools-sdk-generator generate --target react
+bun run --filter @rivi-software/radiotools-sdk-generator generate --target vue
+bun run --filter @rivi-software/radiotools-sdk-generator generate --target openapi
 # go, csharp, ruby, php, svelte — same pattern
 ```
 
 List generator targets:
 
 ```bash
-bun run --filter @radiotools/sdk-generator list-targets
+bun run --filter @rivi-software/radiotools-sdk-generator list-targets
 ```
 
 ## Adding a new SDK target
@@ -85,7 +85,7 @@ bun run --filter @radiotools/sdk-generator list-targets
 2. Add a target module under [`packages/generator/src/targets/`](packages/generator/src/targets/) and register it in [`packages/generator/src/engine.ts`](packages/generator/src/engine.ts).
 3. Add a `packages/sdk-<name>/` package for the emitted code and wire `bun run generate`.
 
-## TypeScript SDK (`@radiotools/sdk`)
+## TypeScript SDK (`@rivi-software/radiotools-sdk`)
 
 See [`packages/sdk-typescript`](packages/sdk-typescript) — usage is unchanged from the previous single-package layout.
 
@@ -103,7 +103,7 @@ Store them as `RADIOTOOLS_API_TOKEN` and `RADIOTOOLS_INGEST_TOKEN`. Pass the raw
 Also set `RADIOTOOLS_BASE_URL` and `RADIOTOOLS_STATION_SLUG`.
 
 ```ts
-import { createStationClient, createStationClientFromEnv } from "@radiotools/sdk";
+import { createStationClient, createStationClientFromEnv } from "@rivi-software/radiotools-sdk";
 
 const client = createStationClientFromEnv();
 ```

@@ -8,7 +8,7 @@ on:
         type: boolean
         default: true
       access:
-        description: npm access (restricted needs @radiotools scope on a paid/org plan)
+        description: npm access (restricted needs @rivi-software scope on a paid/org plan)
         type: choice
         options:
           - restricted

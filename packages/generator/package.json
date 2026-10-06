@@ -1,7 +1,7 @@
 {
-  "name": "@radiotools/sdk-generator",
+  "name": "@rivi-software/radiotools-sdk-generator",
   "version": "0.2.0",
-  "description": "Generate RadioTools SDKs for multiple frameworks from @radiotools/contract",
+  "description": "Generate RadioTools SDKs for multiple frameworks from @rivi-software/radiotools-contract",
   "license": "UNLICENSED",
   "type": "module",
   "bin": {
@@ -33,8 +33,8 @@
     "directory": "packages/generator"
   },
   "dependencies": {
-    "@radiotools/contract": "workspace:*",
-    "@radiotools/sdk": "workspace:*",
+    "@rivi-software/radiotools-contract": "workspace:*",
+    "@rivi-software/radiotools-sdk": "workspace:*",
     "zod": "4.6.5"
   }
 }

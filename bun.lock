@@ -11,26 +11,26 @@
       },
     },
     "packages/contract": {
-      "name": "@radiotools/contract",
+      "name": "@rivi-software/radiotools-contract",
       "version": "0.2.0",
     },
     "packages/generator": {
-      "name": "@radiotools/sdk-generator",
+      "name": "@rivi-software/radiotools-sdk-generator",
       "version": "0.2.0",
       "bin": {
         "radiotools-sdk-generate": "./dist/cli.js",
       },
       "dependencies": {
-        "@radiotools/contract": "workspace:*",
-        "@radiotools/sdk": "workspace:*",
+        "@rivi-software/radiotools-contract": "workspace:*",
+        "@rivi-software/radiotools-sdk": "workspace:*",
         "zod": "4.6.5",
       },
     },
     "packages/sdk-next": {
-      "name": "@radiotools/sdk-next",
+      "name": "@rivi-software/radiotools-sdk-next",
       "version": "0.2.0",
       "dependencies": {
-        "@radiotools/sdk": "workspace:*",
+        "@rivi-software/radiotools-sdk": "workspace:*",
         "server-only": "0.0.1",
       },
       "devDependencies": {
@@ -42,10 +42,10 @@
       },
     },
     "packages/sdk-react": {
-      "name": "@radiotools/sdk-react",
+      "name": "@rivi-software/radiotools-sdk-react",
       "version": "0.2.0",
       "dependencies": {
-        "@radiotools/sdk": "workspace:*",
+        "@rivi-software/radiotools-sdk": "workspace:*",
       },
       "devDependencies": {
         "@types/react": "19.1.13",
@@ -57,10 +57,10 @@
       },
     },
     "packages/sdk-svelte": {
-      "name": "@radiotools/sdk-svelte",
+      "name": "@rivi-software/radiotools-sdk-svelte",
       "version": "0.2.0",
       "dependencies": {
-        "@radiotools/sdk": "workspace:*",
+        "@rivi-software/radiotools-sdk": "workspace:*",
       },
       "devDependencies": {
         "svelte": "5.39.6",
@@ -71,7 +71,7 @@
       },
     },
     "packages/sdk-typescript": {
-      "name": "@radiotools/sdk",
+      "name": "@rivi-software/radiotools-sdk",
       "version": "0.2.0",
       "dependencies": {
         "zod": "4.6.5",
@@ -82,10 +82,10 @@
       },
     },
     "packages/sdk-vue": {
-      "name": "@radiotools/sdk-vue",
+      "name": "@rivi-software/radiotools-sdk-vue",
       "version": "0.2.0",
       "dependencies": {
-        "@radiotools/sdk": "workspace:*",
+        "@rivi-software/radiotools-sdk": "workspace:*",
       },
       "devDependencies": {
         "typescript": "5.9.3",
@@ -231,19 +231,19 @@
 
     "@nodelib/fs.walk": ["@nodelib/fs.walk@1.2.8", "", { "dependencies": { "@nodelib/fs.scandir": "2.1.5", "fastq": "^1.6.0" } }, "sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg=="],
 
-    "@radiotools/contract": ["@radiotools/contract@workspace:packages/contract"],
+    "@rivi-software/radiotools-contract": ["@rivi-software/radiotools-contract@workspace:packages/contract"],
 
-    "@radiotools/sdk": ["@radiotools/sdk@workspace:packages/sdk-typescript"],
+    "@rivi-software/radiotools-sdk": ["@rivi-software/radiotools-sdk@workspace:packages/sdk-typescript"],
 
-    "@radiotools/sdk-generator": ["@radiotools/sdk-generator@workspace:packages/generator"],
+    "@rivi-software/radiotools-sdk-generator": ["@rivi-software/radiotools-sdk-generator@workspace:packages/generator"],
 
-    "@radiotools/sdk-next": ["@radiotools/sdk-next@workspace:packages/sdk-next"],
+    "@rivi-software/radiotools-sdk-next": ["@rivi-software/radiotools-sdk-next@workspace:packages/sdk-next"],
 
-    "@radiotools/sdk-react": ["@radiotools/sdk-react@workspace:packages/sdk-react"],
+    "@rivi-software/radiotools-sdk-react": ["@rivi-software/radiotools-sdk-react@workspace:packages/sdk-react"],
 
-    "@radiotools/sdk-svelte": ["@radiotools/sdk-svelte@workspace:packages/sdk-svelte"],
+    "@rivi-software/radiotools-sdk-svelte": ["@rivi-software/radiotools-sdk-svelte@workspace:packages/sdk-svelte"],
 
-    "@radiotools/sdk-vue": ["@radiotools/sdk-vue@workspace:packages/sdk-vue"],
+    "@rivi-software/radiotools-sdk-vue": ["@rivi-software/radiotools-sdk-vue@workspace:packages/sdk-vue"],
 
     "@sveltejs/acorn-typescript": ["@sveltejs/acorn-typescript@1.0.13", "", { "peerDependencies": { "acorn": "^8.9.0" } }, "sha512-wgKggnhZVL9Bfx1OaKKTrYY9BFRk6C8UAkQNUcIv1+llzYrIqy+RZm5HPKzn0NpEBvTVhTqB4kQyllZywsRBRQ=="],
 

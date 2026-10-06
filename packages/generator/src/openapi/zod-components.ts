@@ -1,4 +1,4 @@
-import { sdkSchemas } from "@radiotools/sdk";
+import { sdkSchemas } from "@rivi-software/radiotools-sdk";
 import { z } from "zod";
 
 export type OpenApiComponents = {
@@ -10,7 +10,7 @@ function stripMeta(schema: Record<string, unknown>): Record<string, unknown> {
   return rest;
 }
 
-/** JSON Schema components generated from `@radiotools/sdk` Zod types (`sdkSchemas`). */
+/** JSON Schema components generated from `@rivi-software/radiotools-sdk` Zod types (`sdkSchemas`). */
 export function buildZodOpenApiComponents(): OpenApiComponents {
   const schemas: Record<string, Record<string, unknown>> = {};
 

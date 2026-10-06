@@ -1,4 +1,4 @@
-import { listenerSdkManifest } from "@radiotools/contract";
+import { listenerSdkManifest } from "@rivi-software/radiotools-contract";
 import {
   buildZodOpenApiComponents,
   jsonSchemaRef,
@@ -176,7 +176,7 @@ function renderOpenApi(): string {
       title: "RadioTools Listener API",
       version: `${manifest.contractVersion}.0.0`,
       description:
-        "OpenAPI generated from @radiotools/contract paths and @radiotools/sdk Zod schemas (sdkSchemas). Station resource hrefs may differ from these templates.",
+        "OpenAPI generated from @rivi-software/radiotools-contract paths and @rivi-software/radiotools-sdk Zod schemas (sdkSchemas). Station resource hrefs may differ from these templates.",
     },
     servers: [
       {
@@ -209,8 +209,8 @@ function renderOpenApi(): string {
     "x-radiotools": {
       contractVersion: manifest.contractVersion,
       socketProtocol: manifest.socketProtocol,
-      zodSchemaSource: "@radiotools/sdk/schemas#sdkSchemas",
-      graphqlSchema: "@radiotools/contract/graphql",
+      zodSchemaSource: "@rivi-software/radiotools-sdk/schemas#sdkSchemas",
+      graphqlSchema: "@rivi-software/radiotools-contract/graphql",
     },
   };
 
@@ -229,11 +229,11 @@ export const openapiTarget: SdkTarget = {
 
 \`openapi.json\` is generated from:
 
-- REST paths in \`@radiotools/contract\`
-- Response and request bodies from \`@radiotools/sdk\` **Zod** types (\`sdkSchemas\`) via \`z.toJSONSchema\`
+- REST paths in \`@rivi-software/radiotools-contract\`
+- Response and request bodies from \`@rivi-software/radiotools-sdk\` **Zod** types (\`sdkSchemas\`) via \`z.toJSONSchema\`
 
 \`\`\`bash
-bun run --filter @radiotools/sdk-generator generate --target openapi
+bun run --filter @rivi-software/radiotools-sdk-generator generate --target openapi
 \`\`\`
 `,
     },

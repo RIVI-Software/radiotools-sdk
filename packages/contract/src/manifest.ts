@@ -1,4 +1,4 @@
-/** Canonical listener SDK surface — used by @radiotools/sdk-generator targets. */
+/** Canonical listener SDK surface — used by @rivi-software/radiotools-sdk-generator targets. */
 
 export const LISTENER_CONTRACT_VERSION = 1 as const;
 export const PUBLIC_SOCKET_PROTOCOL = "radiotools.public.v1" as const;
@@ -27,19 +27,19 @@ export type SdkManifest = {
   contractVersion: typeof LISTENER_CONTRACT_VERSION;
   socketProtocol: typeof PUBLIC_SOCKET_PROTOCOL;
   packageNames: {
-    typescript: "@radiotools/sdk";
+    typescript: "@rivi-software/radiotools-sdk";
     python: "radiotools_sdk";
-    react: "@radiotools/sdk-react";
-    vue: "@radiotools/sdk-vue";
-    svelte: "@radiotools/sdk-svelte";
+    react: "@rivi-software/radiotools-sdk-react";
+    vue: "@rivi-software/radiotools-sdk-vue";
+    svelte: "@rivi-software/radiotools-sdk-svelte";
     go: "github.com/radiotools/radiotools-sdk-go";
     csharp: "RadioTools.Sdk";
     ruby: "radiotools_sdk";
     php: "radiotools/sdk";
-    openapi: "@radiotools/openapi";
+    openapi: "@rivi-software/radiotools-openapi";
     kotlin: "com.radiotools.sdk";
     swift: "RadioToolsSDK";
-    next: "@radiotools/sdk-next";
+    next: "@rivi-software/radiotools-sdk-next";
   };
   env: SdkEnvVar[];
   clientMethods: SdkClientMethod[];
@@ -56,19 +56,19 @@ export const listenerSdkManifest: SdkManifest = {
   contractVersion: LISTENER_CONTRACT_VERSION,
   socketProtocol: PUBLIC_SOCKET_PROTOCOL,
   packageNames: {
-    typescript: "@radiotools/sdk",
+    typescript: "@rivi-software/radiotools-sdk",
     python: "radiotools_sdk",
-    react: "@radiotools/sdk-react",
-    vue: "@radiotools/sdk-vue",
-    svelte: "@radiotools/sdk-svelte",
+    react: "@rivi-software/radiotools-sdk-react",
+    vue: "@rivi-software/radiotools-sdk-vue",
+    svelte: "@rivi-software/radiotools-sdk-svelte",
     go: "github.com/radiotools/radiotools-sdk-go",
     csharp: "RadioTools.Sdk",
     ruby: "radiotools_sdk",
     php: "radiotools/sdk",
-    openapi: "@radiotools/openapi",
+    openapi: "@rivi-software/radiotools-openapi",
     kotlin: "com.radiotools.sdk",
     swift: "RadioToolsSDK",
-    next: "@radiotools/sdk-next",
+    next: "@rivi-software/radiotools-sdk-next",
   },
   env: [
     {

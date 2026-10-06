@@ -4,13 +4,13 @@
   "commit": false,
   "fixed": [
     [
-      "@radiotools/contract",
-      "@radiotools/sdk",
-      "@radiotools/sdk-react",
-      "@radiotools/sdk-vue",
-      "@radiotools/sdk-svelte",
-      "@radiotools/sdk-next",
-      "@radiotools/sdk-generator"
+      "@rivi-software/radiotools-contract",
+      "@rivi-software/radiotools-sdk",
+      "@rivi-software/radiotools-sdk-react",
+      "@rivi-software/radiotools-sdk-vue",
+      "@rivi-software/radiotools-sdk-svelte",
+      "@rivi-software/radiotools-sdk-next",
+      "@rivi-software/radiotools-sdk-generator"
     ]
   ],
   "linked": [],

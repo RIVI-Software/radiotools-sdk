@@ -1,5 +1,5 @@
 {
-  "name": "@radiotools/contract",
+  "name": "@rivi-software/radiotools-contract",
   "version": "0.2.0",
   "description": "RadioTools listener API contract (manifest and GraphQL schema)",
   "license": "UNLICENSED",

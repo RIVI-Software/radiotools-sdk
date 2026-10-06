@@ -1,7 +1,7 @@
 {
-  "name": "@radiotools/sdk-svelte",
+  "name": "@rivi-software/radiotools-sdk-svelte",
   "version": "0.2.0",
-  "description": "Svelte stores for @radiotools/sdk (generated from @radiotools/contract)",
+  "description": "Svelte stores for @rivi-software/radiotools-sdk (generated from @rivi-software/radiotools-contract)",
   "license": "UNLICENSED",
   "type": "module",
   "exports": {
@@ -15,7 +15,7 @@
     "check": "tsc --noEmit"
   },
   "dependencies": {
-    "@radiotools/sdk": "workspace:*"
+    "@rivi-software/radiotools-sdk": "workspace:*"
   },
   "peerDependencies": {
     "svelte": ">=4"

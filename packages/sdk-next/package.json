@@ -1,7 +1,7 @@
 {
-  "name": "@radiotools/sdk-next",
+  "name": "@rivi-software/radiotools-sdk-next",
   "version": "0.2.0",
-  "description": "Next.js App Router server helpers for @radiotools/sdk (generated)",
+  "description": "Next.js App Router server helpers for @rivi-software/radiotools-sdk (generated)",
   "license": "UNLICENSED",
   "type": "module",
   "exports": {
@@ -15,7 +15,7 @@
     "check": "tsc --noEmit"
   },
   "dependencies": {
-    "@radiotools/sdk": "workspace:*",
+    "@rivi-software/radiotools-sdk": "workspace:*",
     "server-only": "0.0.1"
   },
   "peerDependencies": {

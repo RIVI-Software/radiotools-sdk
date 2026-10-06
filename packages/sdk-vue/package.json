@@ -1,7 +1,7 @@
 {
-  "name": "@radiotools/sdk-vue",
+  "name": "@rivi-software/radiotools-sdk-vue",
   "version": "0.2.0",
-  "description": "Vue composables for @radiotools/sdk (generated from @radiotools/contract)",
+  "description": "Vue composables for @rivi-software/radiotools-sdk (generated from @rivi-software/radiotools-contract)",
   "license": "UNLICENSED",
   "type": "module",
   "exports": {
@@ -15,7 +15,7 @@
     "check": "tsc --noEmit"
   },
   "dependencies": {
-    "@radiotools/sdk": "workspace:*"
+    "@rivi-software/radiotools-sdk": "workspace:*"
   },
   "peerDependencies": {
     "vue": ">=3.4"

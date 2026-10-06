@@ -1,5 +1,5 @@
 {
-  "name": "@radiotools/sdk",
+  "name": "@rivi-software/radiotools-sdk",
   "version": "0.2.0",
   "description": "Customer SDK for radio stations. Published listener reads and playback ingest only.",
   "license": "UNLICENSED",

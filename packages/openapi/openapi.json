@@ -3,7 +3,7 @@
   "info": {
     "title": "RadioTools Listener API",
     "version": "1.0.0",
-    "description": "OpenAPI generated from @radiotools/contract paths and @radiotools/sdk Zod schemas (sdkSchemas). Station resource hrefs may differ from these templates."
+    "description": "OpenAPI generated from @rivi-software/radiotools-contract paths and @rivi-software/radiotools-sdk Zod schemas (sdkSchemas). Station resource hrefs may differ from these templates."
   },
   "servers": [
     {
@@ -6438,7 +6438,7 @@
   "x-radiotools": {
     "contractVersion": 1,
     "socketProtocol": "radiotools.public.v1",
-    "zodSchemaSource": "@radiotools/sdk/schemas#sdkSchemas",
-    "graphqlSchema": "@radiotools/contract/graphql"
+    "zodSchemaSource": "@rivi-software/radiotools-sdk/schemas#sdkSchemas",
+    "graphqlSchema": "@rivi-software/radiotools-contract/graphql"
   }
 }

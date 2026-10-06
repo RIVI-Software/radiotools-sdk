@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
-# Publish @radiotools/* packages in dependency order (after changeset version bumps).
+# Publish @rivi-software/* packages in dependency order (after changeset version bumps).
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
 PACKAGES=(
-  "@radiotools/contract"
-  "@radiotools/sdk"
-  "@radiotools/sdk-react"
-  "@radiotools/sdk-vue"
-  "@radiotools/sdk-svelte"
-  "@radiotools/sdk-next"
-  "@radiotools/sdk-generator"
+  "@rivi-software/radiotools-contract"
+  "@rivi-software/radiotools-sdk"
+  "@rivi-software/radiotools-sdk-react"
+  "@rivi-software/radiotools-sdk-vue"
+  "@rivi-software/radiotools-sdk-svelte"
+  "@rivi-software/radiotools-sdk-next"
+  "@rivi-software/radiotools-sdk-generator"
 )
 
 DRY_RUN="${DRY_RUN:-false}"
