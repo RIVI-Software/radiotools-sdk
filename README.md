@@ -4,7 +4,36 @@
 
 Customer SDKs for **radio stations** using the RadioTools listener API (contract v1). Studio administration routes are out of scope.
 
+The TypeScript client is hand-written and complete (REST, GraphQL, WebSocket, ETag caching, retries, playback ingest). Everything else is generated from a single contract package, so every language and framework exposes the same surface.
+
 Licensed under the [MIT License](LICENSE).
+
+## Quick start
+
+```bash
+npm install @rivi-software/radiotools-sdk
+```
+
+```ts
+import { createStationClientFromEnv } from "@rivi-software/radiotools-sdk";
+
+const client = createStationClientFromEnv();
+const nowPlaying = await client.getNowPlaying();
+console.log(nowPlaying.track?.title);
+```
+
+See [Credentials](#credentials) for the environment variables. Using a framework? Pick the binding below: [React](packages/sdk-react), [Vue](packages/sdk-vue), [Svelte](packages/sdk-svelte) or [Next.js](packages/sdk-next).
+
+## How it fits together
+
+```
+contract (manifest + GraphQL schema)
+   └─ generator ─┬─ sdk-react / vue / svelte / next   (wrap the TypeScript client)
+                 ├─ sdk-python / go / dotnet / ruby / php / kotlin / swift   (REST stubs)
+                 └─ openapi.json                       (from Zod schemas)
+```
+
+Only the TypeScript package has GraphQL, WebSocket, ETag and retry support; the other language SDKs are minimal REST stubs.
 
 ## Packages
 
@@ -96,7 +125,7 @@ bun run --filter @rivi-software/radiotools-sdk-generator list-targets
 
 ## TypeScript SDK (`@rivi-software/radiotools-sdk`)
 
-See [`packages/sdk-typescript`](packages/sdk-typescript) — usage is unchanged from the previous single-package layout.
+See [`packages/sdk-typescript`](packages/sdk-typescript).
 
 ### Credentials
 
@@ -117,4 +146,4 @@ import { createStationClient, createStationClientFromEnv } from "@rivi-software/
 const client = createStationClientFromEnv();
 ```
 
-Detailed examples for reads, playback ingest, and realtime remain in the TypeScript package sources and tests under `packages/sdk-typescript/`.
+Examples for reads, realtime and playback ingest are in [`packages/sdk-typescript/README.md`](packages/sdk-typescript/README.md).
