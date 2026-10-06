@@ -1,5 +1,13 @@
 # @rivi-software/radiotools-sdk-react
 
+## 0.2.2
+
+### Patch Changes
+
+- Add package READMEs with install and usage instructions.
+- Updated dependencies
+  - @rivi-software/radiotools-sdk@0.2.2
+
 ## 0.2.1
 
 ### Patch Changes
