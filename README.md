@@ -1,12 +1,95 @@
 <img src="assets/icon.svg" width="64" height="64" alt="">
 
-# @radiotools/sdk
+# RadioTools SDK monorepo
 
-TypeScript client for **radio stations** using the RadioTools customer API.
+Customer SDKs for **radio stations** using the RadioTools listener API (contract v1). Studio administration routes are out of scope.
 
-It reads published station data and sends encoder playback observations. It does not call Studio administration routes and it never sends session cookies. Keep credentials on the station's own server. Do not bundle them into a website, app, or player.
+## Packages
 
-## Credentials
+| Package | Description |
+| --- | --- |
+| [`@radiotools/contract`](packages/contract) | API manifest and GraphQL schema — source of truth for generators |
+| [`@radiotools/sdk-generator`](packages/generator) | CLI to emit framework SDKs from the contract |
+| [`@radiotools/sdk`](packages/sdk-typescript) | Full TypeScript client (REST, GraphQL, WebSocket, ETag, retries) |
+| [`@radiotools/sdk-react`](packages/sdk-react) | React hooks (generated; wraps `@radiotools/sdk`) |
+| [`@radiotools/sdk-vue`](packages/sdk-vue) | Vue composables (generated) |
+| [`@radiotools/sdk-svelte`](packages/sdk-svelte) | Svelte stores (generated) |
+| [`@radiotools/sdk-next`](packages/sdk-next) | Next.js App Router server helpers (generated) |
+| [`radiotools-sdk`](packages/sdk-python) | Python `httpx` stubs (generated) |
+| [`radiotools-sdk-go`](packages/sdk-go) | Go `net/http` stubs (generated) |
+| [`RadioTools.Sdk`](packages/sdk-dotnet) | .NET `HttpClient` stubs (generated) |
+| [`radiotools_sdk`](packages/sdk-ruby) | Ruby `Net::HTTP` stubs (generated) |
+| [`radiotools/sdk`](packages/sdk-php) | PHP curl stubs (generated) |
+| [`openapi.json`](packages/openapi) | OpenAPI 3.1 + JSON Schema from Zod `sdkSchemas` (generated) |
+| [`sdk-kotlin`](packages/sdk-kotlin) | Kotlin/Android OkHttp stubs (generated) |
+| [`RadioToolsSDK`](packages/sdk-swift) | Swift URLSession stubs (generated) |
+
+## Development
+
+```bash
+bun install
+bun run check
+bun test
+bun run generate
+```
+
+## Publish to npm
+
+Publishable packages (fixed version group): `@radiotools/contract`, `@radiotools/sdk`, `@radiotools/sdk-react`, `@radiotools/sdk-vue`, `@radiotools/sdk-svelte`, `@radiotools/sdk-next`, `@radiotools/sdk-generator`.
+
+### GitHub setup
+
+1. Create an npm access token with **publish** rights to the `@radiotools` scope.
+2. Add repository secret **`NPM_TOKEN`** ([Settings → Secrets → Actions](https://github.com/RIVI-Software/radiotools-sdk/settings/secrets/actions)).
+3. Enable **npm provenance** for the org (recommended; workflows request `id-token: write`).
+
+Default publish access is **`restricted`** (private to npm org). Use the manual workflow’s **public** option only if these packages should be public on npm.
+
+### Automated release (Changesets)
+
+On every push to `main`, [`.github/workflows/release-npm.yml`](.github/workflows/release-npm.yml) either opens a **Version packages** PR or publishes when that PR is merged:
+
+```bash
+bunx changeset          # describe the change
+# merge the version PR from CI
+# CI runs generate → build → test → npm publish
+```
+
+### Manual publish
+
+[`.github/workflows/publish-npm-manual.yml`](.github/workflows/publish-npm-manual.yml) — **Actions → Publish npm (manual)**. Start with **dry run** enabled to validate tarballs.
+
+### CI
+
+[`.github/workflows/ci.yml`](.github/workflows/ci.yml) runs on pull requests and `main`: `generate`, typecheck, and tests.
+
+Generate one target:
+
+```bash
+bun run --filter @radiotools/sdk-generator generate --target python
+bun run --filter @radiotools/sdk-generator generate --target react
+bun run --filter @radiotools/sdk-generator generate --target vue
+bun run --filter @radiotools/sdk-generator generate --target openapi
+# go, csharp, ruby, php, svelte — same pattern
+```
+
+List generator targets:
+
+```bash
+bun run --filter @radiotools/sdk-generator list-targets
+```
+
+## Adding a new SDK target
+
+1. Extend [`packages/contract/src/manifest.ts`](packages/contract/src/manifest.ts) if the public surface changed.
+2. Add a target module under [`packages/generator/src/targets/`](packages/generator/src/targets/) and register it in [`packages/generator/src/engine.ts`](packages/generator/src/engine.ts).
+3. Add a `packages/sdk-<name>/` package for the emitted code and wire `bun run generate`.
+
+## TypeScript SDK (`@radiotools/sdk`)
+
+See [`packages/sdk-typescript`](packages/sdk-typescript) — usage is unchanged from the previous single-package layout.
+
+### Credentials
 
 Create keys in RadioTools under **Settings → API credentials**.
 
@@ -15,105 +98,14 @@ Create keys in RadioTools under **Settings → API credentials**.
 | Website, app, or player backend | Station key | `listener:read` |
 | Encoder or automation | Integration key named `playback` | `ingest:write` |
 
-Store them as `RADIOTOOLS_API_TOKEN` and `RADIOTOOLS_INGEST_TOKEN`. Pass the raw `rtm_…` value. The SDK adds the `Bearer ` prefix. A listener key cannot ingest playback, and an ingest key cannot read published JSON.
+Store them as `RADIOTOOLS_API_TOKEN` and `RADIOTOOLS_INGEST_TOKEN`. Pass the raw `rtm_…` value. The SDK adds the `Bearer ` prefix.
 
-Also set `RADIOTOOLS_BASE_URL` to the RadioTools origin and `RADIOTOOLS_STATION_SLUG` to the station slug. In **Settings → Public APIs**, enable the resources this station should expose.
-
-## Install
-
-This package is private to radio-station customers (`UNLICENSED`). Depend on it from the station project that received this repository.
+Also set `RADIOTOOLS_BASE_URL` and `RADIOTOOLS_STATION_SLUG`.
 
 ```ts
 import { createStationClient, createStationClientFromEnv } from "@radiotools/sdk";
 
 const client = createStationClientFromEnv();
-// or
-const client = createStationClient({
-  baseUrl: "https://radio.example",
-  stationSlug: "breeze",
-  apiToken: process.env.RADIOTOOLS_API_TOKEN,
-  ingestToken: process.env.RADIOTOOLS_INGEST_TOKEN,
-});
 ```
 
-An encoder that only reports now-playing can omit `apiToken`. A website that only reads can omit `ingestToken`.
-
-## Read published data
-
-JSON responses are `Cache-Control: no-store` and carry a strong ETag. Pass `etagCache: createEtagCache()` so repeat reads send `If-None-Match`. Poll on `recommendedPollIntervalMs()` (currently 30 seconds) or subscribe to the socket.
-
-`transport` is `http` by default. Set `transport: "graphql"` or `"auto"` to use the station GraphQL route. `"auto"` falls back to HTTP only when that route is missing. An authentication failure does not fall back.
-
-```ts
-import { createEtagCache, createStationClient, publicMediaUrl } from "@radiotools/sdk";
-
-const client = createStationClient({
-  baseUrl: process.env.RADIOTOOLS_BASE_URL!,
-  stationSlug: process.env.RADIOTOOLS_STATION_SLUG!,
-  apiToken: process.env.RADIOTOOLS_API_TOKEN!,
-  etagCache: createEtagCache(),
-});
-
-const station = await client.getStation();
-const news = await client.getContent({ type: "news", limit: 10 });
-for await (const article of client.iterateContent({ type: "news" })) {
-  console.log(article.id, article.revision);
-}
-
-const schedule = await client.getSchedule({
-  fromDate: "2026-10-04",
-  throughDate: "2026-10-11",
-});
-const onAir = await client.getCurrentBroadcast();
-const nowPlaying = await client.getNowPlaying();
-const cover = nowPlaying.track?.artworkUrl ?? null;
-const weather = await client.getWeather(); // null when the station has not enabled it
-const traffic = await client.getTraffic();
-
-const artwork = publicMediaUrl(
-  process.env.RADIOTOOLS_BASE_URL!,
-  station.resources.media,
-  news.records[0].media[0].versionId,
-  "display",
-);
-```
-
-Schedule and program windows are 1 to 31 inclusive days. Weather and traffic return `null` when that resource is disabled or the station is not entitled to redistribute it.
-
-A disabled resource throws `Public <name> API is unavailable for this station` when you request it. `401` means the bearer token is missing, expired, revoked, or has the wrong scope. `404` means the station, resource, or record is not available. `429` and `503` are retried up to two extra times, honoring a numeric `Retry-After` up to five seconds.
-
-## Playback ingest
-
-Create one observation per play event. The SDK assigns `eventId` when you omit it and reuses that id if the request is retried.
-
-```ts
-await client.reportPlayback({
-  artist: "Example Artist",
-  title: "Example Track",
-  durationSeconds: 215,
-  artworkUrl: "https://cdn.example/cover.jpg",
-  isPlaying: true,
-});
-```
-
-`streamTitle: "Artist - Title"` is accepted instead of separate artist and title fields. `artworkUrl` must be HTTPS with no userinfo. The body must stay within 8 KiB. To target the internal station id instead of the slug, call `reportPlayback(observation, { stationId })`.
-
-## Realtime
-
-`subscribe` needs a server WebSocket adapter that attaches the Authorization header. The browser `WebSocket` constructor cannot set that header, so a public site should bridge the socket on its own server.
-
-```ts
-const subscription = client.subscribe(
-  {
-    onNowPlaying: (data) => console.log(data.track?.title, data.track?.artworkUrl),
-    onAir: (state) => console.log(state?.status),
-    onSchedule: (data) => console.log(data.broadcasts.length),
-    onContent: (id, record) => console.log(id, record?.revision),
-  },
-  { fromDate: "2026-10-04", throughDate: "2026-10-11" },
-);
-
-subscription.close();
-```
-
-Preview frames on the public socket are ignored. Unpublished editorial preview uses `previewEditorial(grant, input)` with a preview grant passed as an argument, not taken from a query string.
+Detailed examples for reads, playback ingest, and realtime remain in the TypeScript package sources and tests under `packages/sdk-typescript/`.

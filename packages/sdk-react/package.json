@@ -1,0 +1,37 @@
+{
+  "name": "@radiotools/sdk-react",
+  "version": "0.2.0",
+  "description": "React hooks for @radiotools/sdk (generated from @radiotools/contract)",
+  "license": "UNLICENSED",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "files": [
+    "src"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@radiotools/sdk": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.13",
+    "react": "19.1.1",
+    "typescript": "5.9.3"
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "provenance": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RIVI-Software/radiotools-sdk.git",
+    "directory": "packages/sdk-react"
+  }
+}

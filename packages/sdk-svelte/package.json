@@ -1,0 +1,36 @@
+{
+  "name": "@radiotools/sdk-svelte",
+  "version": "0.2.0",
+  "description": "Svelte stores for @radiotools/sdk (generated from @radiotools/contract)",
+  "license": "UNLICENSED",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "files": [
+    "src"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@radiotools/sdk": "workspace:*"
+  },
+  "peerDependencies": {
+    "svelte": ">=4"
+  },
+  "devDependencies": {
+    "svelte": "5.39.6",
+    "typescript": "5.9.3"
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "provenance": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RIVI-Software/radiotools-sdk.git",
+    "directory": "packages/sdk-svelte"
+  }
+}

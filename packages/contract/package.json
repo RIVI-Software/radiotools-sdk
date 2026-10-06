@@ -1,0 +1,27 @@
+{
+  "name": "@radiotools/contract",
+  "version": "0.2.0",
+  "description": "RadioTools listener API contract (manifest and GraphQL schema)",
+  "license": "UNLICENSED",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./graphql": "./graphql/schema.graphql"
+  },
+  "files": [
+    "src",
+    "graphql"
+  ],
+  "scripts": {
+    "check": "tsc --noEmit"
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "provenance": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RIVI-Software/radiotools-sdk.git",
+    "directory": "packages/contract"
+  }
+}

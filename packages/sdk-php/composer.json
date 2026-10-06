@@ -1,0 +1,14 @@
+{
+  "name": "radiotools/sdk",
+  "description": "Generated RadioTools listener REST stubs",
+  "type": "library",
+  "license": "proprietary",
+  "require": {
+    "php": ">=8.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "RadioTools\\Sdk\\": "src/"
+    }
+  }
+}
