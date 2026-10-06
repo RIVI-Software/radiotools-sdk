@@ -2,7 +2,7 @@
   "name": "radiotools-sdk-monorepo",
   "private": true,
   "description": "RadioTools customer SDKs and generators",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "workspaces": [
     "packages/*"
   ],

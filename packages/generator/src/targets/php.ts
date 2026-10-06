@@ -149,7 +149,7 @@ export const phpTarget: SdkTarget = {
           name: "radiotools/sdk",
           description: "Generated RadioTools listener REST stubs",
           type: "library",
-          license: "proprietary",
+          license: "MIT",
           require: { php: ">=8.2" },
           autoload: {
             "psr-4": {

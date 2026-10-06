@@ -4,6 +4,8 @@
 
 Customer SDKs for **radio stations** using the RadioTools listener API (contract v1). Studio administration routes are out of scope.
 
+Licensed under the [MIT License](LICENSE).
+
 ## Packages
 
 | Package | Description |

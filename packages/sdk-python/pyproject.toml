@@ -3,6 +3,7 @@ name = "radiotools-sdk"
 version = "0.2.0"
 description = "RadioTools listener SDK for Python (generated REST stubs)"
 readme = "README.md"
+license = "MIT"
 requires-python = ">=3.11"
 dependencies = [
   "httpx>=0.28",
