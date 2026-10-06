@@ -16,7 +16,7 @@ PACKAGES=(
 )
 
 DRY_RUN="${DRY_RUN:-false}"
-ACCESS="${NPM_PUBLISH_ACCESS:-restricted}"
+ACCESS="${NPM_PUBLISH_ACCESS:-public}"
 
 # npm provenance requires GitHub Actions OIDC — not available for local publishes.
 PROVENANCE_ARGS=()

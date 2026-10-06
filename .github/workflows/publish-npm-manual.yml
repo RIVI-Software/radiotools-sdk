@@ -8,12 +8,12 @@ on:
         type: boolean
         default: true
       access:
-        description: npm access (restricted needs @rivi-software scope on a paid/org plan)
+        description: npm access level
         type: choice
         options:
-          - restricted
           - public
-        default: restricted
+          - restricted
+        default: public
 
 permissions:
   contents: read

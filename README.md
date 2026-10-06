@@ -45,7 +45,7 @@ Publishable packages (fixed version group): `@rivi-software/radiotools-contract`
 2. Add repository secret **`NPM_TOKEN`** ([Settings → Secrets → Actions](https://github.com/RIVI-Software/radiotools-sdk/settings/secrets/actions)).
 3. Enable **npm provenance** for the org (recommended; workflows request `id-token: write`).
 
-Default publish access is **`restricted`** (private to npm org). Use the manual workflow’s **public** option only if these packages should be public on npm.
+Packages publish as **`public`** on npm (MIT license).
 
 ### Automated release (Changesets)
 
