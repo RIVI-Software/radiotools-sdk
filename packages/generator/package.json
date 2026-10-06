@@ -1,6 +1,6 @@
 {
   "name": "@rivi-software/radiotools-sdk-generator",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Generate RadioTools SDKs for multiple frameworks from @rivi-software/radiotools-contract",
   "license": "MIT",
   "type": "module",

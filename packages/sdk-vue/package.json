@@ -1,6 +1,6 @@
 {
   "name": "@rivi-software/radiotools-sdk-vue",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Vue composables for @rivi-software/radiotools-sdk (generated from @rivi-software/radiotools-contract)",
   "license": "MIT",
   "type": "module",

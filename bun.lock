@@ -12,11 +12,11 @@
     },
     "packages/contract": {
       "name": "@rivi-software/radiotools-contract",
-      "version": "0.2.1",
+      "version": "0.2.2",
     },
     "packages/generator": {
       "name": "@rivi-software/radiotools-sdk-generator",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "bin": {
         "radiotools-sdk-generate": "./dist/cli.js",
       },
@@ -28,7 +28,7 @@
     },
     "packages/sdk-next": {
       "name": "@rivi-software/radiotools-sdk-next",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "dependencies": {
         "@rivi-software/radiotools-sdk": "workspace:*",
         "server-only": "0.0.1",
@@ -43,7 +43,7 @@
     },
     "packages/sdk-react": {
       "name": "@rivi-software/radiotools-sdk-react",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "dependencies": {
         "@rivi-software/radiotools-sdk": "workspace:*",
       },
@@ -58,7 +58,7 @@
     },
     "packages/sdk-svelte": {
       "name": "@rivi-software/radiotools-sdk-svelte",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "dependencies": {
         "@rivi-software/radiotools-sdk": "workspace:*",
       },
@@ -72,7 +72,7 @@
     },
     "packages/sdk-typescript": {
       "name": "@rivi-software/radiotools-sdk",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "dependencies": {
         "zod": "4.6.5",
       },
@@ -83,7 +83,7 @@
     },
     "packages/sdk-vue": {
       "name": "@rivi-software/radiotools-sdk-vue",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "dependencies": {
         "@rivi-software/radiotools-sdk": "workspace:*",
       },
