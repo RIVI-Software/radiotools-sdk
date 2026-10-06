@@ -25,8 +25,7 @@
     "vue": "3.5.22"
   },
   "publishConfig": {
-    "access": "restricted",
-    "provenance": true
+    "access": "restricted"
   },
   "repository": {
     "type": "git",

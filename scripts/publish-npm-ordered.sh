@@ -18,11 +18,17 @@ PACKAGES=(
 DRY_RUN="${DRY_RUN:-false}"
 ACCESS="${NPM_PUBLISH_ACCESS:-restricted}"
 
+# npm provenance requires GitHub Actions OIDC — not available for local publishes.
+PROVENANCE_ARGS=()
+if [[ "${NPM_PROVENANCE:-}" == "true" ]] || [[ "${GITHUB_ACTIONS:-}" == "true" ]]; then
+  PROVENANCE_ARGS=(--provenance)
+fi
+
 for name in "${PACKAGES[@]}"; do
   echo "Publishing ${name} (access=${ACCESS})…"
   if [[ "$DRY_RUN" == "true" ]]; then
     npm publish -w "$name" --access "$ACCESS" --dry-run
   else
-    npm publish -w "$name" --access "$ACCESS" --provenance
+    npm publish -w "$name" --access "$ACCESS" "${PROVENANCE_ARGS[@]}"
   fi
 done

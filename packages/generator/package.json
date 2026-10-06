@@ -24,8 +24,7 @@
     "list-targets": "bun src/cli.ts list"
   },
   "publishConfig": {
-    "access": "restricted",
-    "provenance": true
+    "access": "restricted"
   },
   "repository": {
     "type": "git",

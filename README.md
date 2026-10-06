@@ -59,7 +59,14 @@ bunx changeset          # describe the change
 
 ### Manual publish
 
-[`.github/workflows/publish-npm-manual.yml`](.github/workflows/publish-npm-manual.yml) — **Actions → Publish npm (manual)**. Start with **dry run** enabled to validate tarballs.
+**From your machine** (no npm provenance — that needs GitHub Actions):
+
+```bash
+npm login   # or export NODE_AUTH_TOKEN=...
+bash scripts/publish-npm-ordered.sh
+```
+
+**From GitHub Actions** — [`.github/workflows/publish-npm-manual.yml`](.github/workflows/publish-npm-manual.yml) sets `GITHUB_ACTIONS=true`, so the script adds `--provenance`. Start with **dry run** enabled to validate tarballs.
 
 ### CI
 
