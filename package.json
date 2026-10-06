@@ -1,23 +1,25 @@
 {
-  "name": "@radiotools/sdk",
-  "version": "0.2.0",
+  "name": "radiotools-sdk-monorepo",
   "private": true,
-  "description": "Customer SDK for radio stations. Published listener reads and playback ingest only.",
+  "description": "RadioTools customer SDKs and generators",
   "license": "UNLICENSED",
-  "type": "module",
-  "exports": {
-    ".": "./src/index.ts"
-  },
-  "sideEffects": false,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "check": "tsc --noEmit",
-    "test": "bun test"
-  },
-  "dependencies": {
-    "zod": "4.6.5"
+    "check": "bun run --filter '*' check",
+    "test": "bun run --filter @radiotools/sdk test",
+    "generate": "bun run --filter @radiotools/sdk-generator generate --target all",
+    "build": "bun run --filter @radiotools/sdk-generator build",
+    "postinstall": "bun run --filter @radiotools/sdk-generator build",
+    "changeset": "changeset",
+    "version-packages": "changeset version && bun install",
+    "release-packages": "bun run generate && bun run build && bun run check && bun test && changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "2.29.2",
     "@types/bun": "1.2.23",
     "typescript": "5.9.3"
-  }
+  },
+  "packageManager": "bun@1.4.2"
 }

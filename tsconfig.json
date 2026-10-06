@@ -1,14 +1,12 @@
 {
-  "compilerOptions": {
-    "target": "ES2022",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "strict": true,
-    "noEmit": true,
-    "skipLibCheck": true,
-    "types": ["bun"],
-    "verbatimModuleSyntax": true,
-    "noUncheckedIndexedAccess": true
-  },
-  "include": ["src", "tests"]
+  "files": [],
+  "references": [
+    { "path": "./packages/contract" },
+    { "path": "./packages/generator" },
+    { "path": "./packages/sdk-typescript" },
+    { "path": "./packages/sdk-react" },
+    { "path": "./packages/sdk-vue" },
+    { "path": "./packages/sdk-svelte" },
+    { "path": "./packages/sdk-next" }
+  ]
 }

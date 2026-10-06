@@ -1,0 +1,34 @@
+{
+  "name": "@radiotools/sdk",
+  "version": "0.2.0",
+  "description": "Customer SDK for radio stations. Published listener reads and playback ingest only.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "files": [
+    "src"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "check": "tsc --noEmit",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@types/bun": "1.2.23",
+    "typescript": "5.9.3"
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "provenance": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RIVI-Software/radiotools-sdk.git",
+    "directory": "packages/sdk-typescript"
+  }
+}
